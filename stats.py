@@ -44,14 +44,14 @@ for filename in os.listdir(directory):
             went_dead = True
             for j in [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17]:
                 cell = str(game[i+3][j]).strip()
-                if cell == '15':
                     tossup_stats[row][4] += 1
+                if cell == '15' or cell == '15.0':
                     went_dead = False
-                if cell == '10':
                     tossup_stats[row][5] += 1
+                if cell == '10' or cell == '10.0':
                     went_dead = False
-                if cell == '-5':
                     tossup_stats[row][6] += 1
+                if cell == '-5' or cell == '-5.0':
 
             if went_dead:
                 tossup_stats[row][7] += 1
@@ -61,10 +61,10 @@ for filename in os.listdir(directory):
             bonus_stats[row][2] = sheet_counter + starting_round
             for j in [8, 18]:
                 cell = str(game[i+3][j]).strip()
-                if cell == '30': bonus_stats[row][4] += 1
-                if cell == '20': bonus_stats[row][5] += 1
-                if cell == '10': bonus_stats[row][6] += 1
-                if cell ==  '0': bonus_stats[row][7] += 1
+                if cell == '30' or cell == '30.0': bonus_stats[row][2] += 1
+                if cell == '20' or cell == '20.0': bonus_stats[row][3] += 1
+                if cell == '10' or cell == '10.0': bonus_stats[row][4] += 1
+                if cell ==  '0' or cell == '0.0' : bonus_stats[row][5] += 1
 
 
 for array in tossup_stats:
