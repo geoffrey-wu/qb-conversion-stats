@@ -44,7 +44,7 @@ for filename in os.listdir(directory):
             row = i + 20*sheet_counter + 1
             tossup_stats[row][0] = sheet_counter + starting_round
             went_dead = True
-            for j in [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17]:
+            for j in [2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18]:
                 cell = str(game[i+3][j]).strip()
                 if cell == '15' or cell == '15.0':
                     tossup_stats[row][2] += 1
@@ -54,9 +54,14 @@ for filename in os.listdir(directory):
                     went_dead = False
                 if cell == '-5' or cell == '-5.0':
                     tossup_stats[row][4] += 1
+                if cell == 'DT':
+                    actually_went_dead = True
 
             if went_dead:
                 tossup_stats[row][5] += 1
+
+            if went_dead and not actually_went_dead:
+                print(f'warning - tossup {i+1} is dead but not marked with DT')
 
         for i in range(20):  # compiling bonus stats
             row = i + 20*sheet_counter + 1
